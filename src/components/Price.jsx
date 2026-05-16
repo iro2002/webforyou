@@ -5,38 +5,45 @@ const plans = [
   {
     id: 1,
     name: "Starter",
-    price: "$199",
-    desc: "Perfect for small businesses or personal websites.",
+    price: "LKR 15,900",
+    desc: "Perfect for personal brands, portfolios, and small business websites.",
     features: [
-      "1 Landing Page",
-      "Basic UI/UX Design",
-      "Responsive Design",
-      "3 Revisions",
+      "1 High-Quality Landing Page",
+      "Modern Design",
+      "Fully Responsive Layout",
+      "Basic SEO Setup",
+      "Hosting Setup (1 Year Free)",
+      "Up to 3 Revisions",
     ],
   },
   {
     id: 2,
     name: "Professional",
-    price: "$499",
-    desc: "Best for growing startups and business websites.",
+    price: "LKR 29,900",
+    desc: "Ideal for growing startups and service-based businesses.",
     features: [
-      "Up to 5 Pages",
-      "Advanced UI/UX Design",
-      "SEO Optimization",
-      "Performance Optimization",
-      "5 Revisions",
+      "Up to 5 Custom Pages",
+      "Modern Design",
+      "SEO Optimization (On-page)",
+      "Speed & Performance Optimization",
+      "Free Domain (1 Year)",
+      "SSL Certificate Included",
+      "Hosting Setup (3 Months Free)",
+      "Mobile-first Responsive Design",
+      "Up to 5 Revisions",
     ],
   },
   {
     id: 3,
     name: "Enterprise",
-    price: "$999",
-    desc: "Full-scale solution for large businesses.",
+    price: "LKR 59,000",
+    desc: "Complete digital solution for large-scale businesses and platforms.",
     features: [
-      "Unlimited Pages",
-      "Custom UI/UX System",
+      "Modern Design",
       "Full Stack Development",
-      "API Integration",
+      "Free Domain (1 Year)",
+      "SSL Certificate Included",
+      "Hosting Setup (6 Months Free)",
       "Priority Support",
     ],
   },
@@ -71,7 +78,6 @@ const PricingStrategy = () => {
 
   return (
     <section className="relative py-32 text-black overflow-hidden bg-white">
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16">
 
         {/* HEADER */}
@@ -83,15 +89,13 @@ const PricingStrategy = () => {
           className="mb-28 text-center max-w-4xl mx-auto"
         >
           <h2 className="text-6xl md:text-8xl lg:text-[110px] font-light leading-[1.05] tracking-tight">
-            Pricing{" "}
-            <span className="text-[#c22924]">
-              Strategy
-            </span>
+            Fair{" "}
+            <span className="text-[#c22924]">Pricing</span>
           </h2>
 
           <p className="mt-8 text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Transparent pricing built for startups, businesses, and enterprise-level solutions.
-            No hidden costs. Just value-driven results.
+            Transparent, value-driven pricing including domain, SSL, and hosting setup.
+            No hidden costs — everything you need to launch.
           </p>
         </motion.div>
 
@@ -115,9 +119,11 @@ const PricingStrategy = () => {
                 shadow-[6px_6px_0px_#c22924]
                 hover:shadow-[12px_12px_0px_#c22924]
                 ${i === 1 ? "border-[#c22924]/40" : ""}
+
+                flex flex-col h-full
               `}
             >
-              {/* PLAN NAME */}
+              {/* TITLE */}
               <h3 className="text-2xl font-light tracking-tight">
                 {plan.name}
               </h3>
@@ -127,7 +133,7 @@ const PricingStrategy = () => {
                 {plan.price}
               </p>
 
-              {/* DESC */}
+              {/* DESCRIPTION */}
               <p className="text-gray-600 mt-4 text-sm leading-relaxed">
                 {plan.desc}
               </p>
@@ -142,17 +148,13 @@ const PricingStrategy = () => {
                 ))}
               </ul>
 
-              {/* BUTTON */}
-              <button className="mt-10 w-full py-3 rounded-full bg-black text-white text-xs uppercase tracking-widest hover:bg-[#c22924] transition">
+              {/* BUTTON (ALIGNED SAME LEVEL) */}
+              <button className="mt-auto w-full py-3 rounded-full bg-black text-white text-xs uppercase tracking-widest hover:bg-[#c22924] transition">
                 Get Started
               </button>
-
-              {/* RED ACCENT LINE */}
-              <div className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#c22924] group-hover:w-full transition-all duration-500" />
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

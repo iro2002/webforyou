@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "What technologies do you use?",
     answer:
-      "We use modern technologies like React, Next.js, Node.js, WordPress, and Tailwind CSS depending on project needs.",
+      "We use modern technologies like React, Node.js and Tailwind CSS depending on project needs.",
   },
 ];
 

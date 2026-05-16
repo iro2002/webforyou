@@ -72,7 +72,7 @@ const HeroSection = () => {
             variants={reveal}
             className="mt-7 text-base md:text-xl text-gray-700 leading-relaxed max-w-2xl"
           >
-            High-quality websites and UI systems built with precision,
+            High-quality websites and systems built with precision,
             performance, and clean modern aesthetics.
           </motion.p>
 

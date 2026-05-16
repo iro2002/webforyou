@@ -22,7 +22,7 @@ import Line3 from "./components/Line3";
 const App = () => {
   return (
     <div className="min-h-screen relative">
-      <SocialSidebar />
+   
       <Header />
       <Navbar />
       <Line3 />

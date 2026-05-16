@@ -36,8 +36,8 @@ const PremiumSeparator = () => {
         <div className="absolute top-[-100px] md:top-[-200px] left-[-100px] md:left-[-150px] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-white/10 blur-[100px] md:blur-[160px] rounded-full" />
         <div className="absolute bottom-[-100px] md:bottom-[-200px] right-[-100px] md:right-[-150px] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-black/20 blur-[120px] md:blur-[180px] rounded-full" />
 
-        {/* BIG BG TEXT */}
-        <h1 className="absolute inset-0 flex items-center justify-center text-[28vw] md:text-[22vw] tracking-tighter text-white/5 select-none pointer-events-none z-0 font-thin">
+        {/* BIG BG TEXT - Increased from 28vw to 55vw on mobile */}
+        <h1 className="absolute inset-0 flex items-center justify-center text-[55vw] md:text-[22vw] tracking-tighter text-white/5 select-none pointer-events-none z-0 font-thin overflow-hidden whitespace-nowrap opacity-60 md:opacity-100">
           DIGITAL
         </h1>
 
@@ -97,7 +97,7 @@ const PremiumSeparator = () => {
 
             {/* FLOATING LAPTOP */}
             <motion.div
-              animate={{ y: [0, -12, 0] }} // Slightly reduced float travel for mobile safety
+              animate={{ y: [0, -12, 0] }} 
               transition={{
                 duration: 4,
                 repeat: Infinity,
