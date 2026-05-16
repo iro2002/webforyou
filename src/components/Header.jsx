@@ -21,9 +21,7 @@ const Header = () => {
       {/* TOP BAR */}
       <div className="pointer-events-auto hidden lg:flex justify-end items-center h-10 bg-[#c22924] text-white text-[11px] font-medium tracking-[0.12em] border-b border-white/10 w-full">
         <div className="flex items-center space-x-4 px-6">
-          <a href="#careers" className="hover:opacity-80 uppercase transition">
-            Careers
-          </a>
+
           <span className="text-white/40">|</span>
 
           <a href="#newsletter" className="hover:opacity-80 uppercase transition">
@@ -57,14 +55,11 @@ const Header = () => {
       <div className="w-full flex items-start justify-between">
 
         {/* LOGO LEFT (No Background, completely separate) */}
-        <div 
-          className={`pointer-events-auto flex items-center gap-2 cursor-pointer transition-all duration-300 pl-6 md:pl-12 ${
-            scrolled ? "mt-4" : "mt-6"
-          }`}
+        <div
+          className={`pointer-events-auto flex items-center gap-2 cursor-pointer transition-all duration-300 pl-6 md:pl-12 ${scrolled ? "mt-4" : "mt-6"
+            }`}
         >
-          <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-[#c22924] flex items-center justify-center text-white text-sm font-bold">
-            W
-          </div>
+
 
           <div className="text-2xl md:text-3xl font-semibold tracking-tight shadow-white drop-shadow-md">
             <span className="text-black">WEB</span>
@@ -74,22 +69,20 @@ const Header = () => {
 
         {/* DESKTOP NAV (Right Half Only, White Background) */}
         <nav
-          className={`pointer-events-auto hidden lg:flex items-center gap-10 transition-all duration-300 rounded-bl-3xl ${
-            scrolled
-              ? "bg-white/95 backdrop-blur-xl shadow-md py-4 px-12"
-              : "bg-white py-6 px-16 shadow-sm"
-          }`}
+          className={`pointer-events-auto hidden lg:flex items-center gap-10 transition-all duration-300 rounded-bl-3xl ${scrolled
+            ? "bg-white/95 backdrop-blur-xl shadow-md py-4 px-12"
+            : "bg-white py-6 px-16 shadow-sm"
+            }`}
         >
           {navLinks.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
               onClick={() => setActiveLink(item)}
-              className={`text-sm font-medium transition ${
-                activeLink === item
-                  ? "text-[#c22924]"
-                  : "text-gray-900 hover:text-[#c22924]"
-              }`}
+              className={`text-sm font-medium transition ${activeLink === item
+                ? "text-[#c22924]"
+                : "text-gray-900 hover:text-[#c22924]"
+                }`}
             >
               {item}
             </a>
@@ -99,24 +92,20 @@ const Header = () => {
         {/* MOBILE MENU BUTTON (Given a white background block so it's visible) */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className={`pointer-events-auto lg:hidden flex flex-col gap-1.5 p-3 mr-6 bg-white rounded-bl-xl shadow-sm transition-all duration-300 ${
-            scrolled ? "mt-0 rounded-none rounded-b-xl" : "mt-0"
-          }`}
+          className={`pointer-events-auto lg:hidden flex flex-col gap-1.5 p-3 mr-6 bg-white rounded-bl-xl shadow-sm transition-all duration-300 ${scrolled ? "mt-0 rounded-none rounded-b-xl" : "mt-0"
+            }`}
         >
           <span
-            className={`w-6 h-[2px] bg-black transition-all ${
-              menuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
+            className={`w-6 h-[2px] bg-black transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
           />
           <span
-            className={`w-6 h-[2px] bg-black transition-all ${
-              menuOpen ? "opacity-0" : ""
-            }`}
+            className={`w-6 h-[2px] bg-black transition-all ${menuOpen ? "opacity-0" : ""
+              }`}
           />
           <span
-            className={`w-6 h-[2px] bg-black transition-all ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
+            className={`w-6 h-[2px] bg-black transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
           />
         </button>
       </div>
@@ -153,9 +142,8 @@ const Header = () => {
                     setActiveLink(item);
                     setMenuOpen(false);
                   }}
-                  className={`text-4xl font-light ${
-                    activeLink === item ? "text-[#c22924]" : "text-black"
-                  }`}
+                  className={`text-4xl font-light ${activeLink === item ? "text-[#c22924]" : "text-black"
+                    }`}
                 >
                   {item}
                 </a>
@@ -169,7 +157,7 @@ const Header = () => {
         )}
       </AnimatePresence>
     </header>
-  );AC
+  ); AC
 };
 
 export default Header;

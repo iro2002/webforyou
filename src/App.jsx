@@ -18,11 +18,16 @@ import Form from "./components/Form";
 import Line from "./components/Line";
 import Line2 from "./components/Line2";
 import Line3 from "./components/Line3";
+import LetsTalk from "./components/LetsTalk";
+import TermsModal from "./components/TermsModal";
+
 
 const App = () => {
   return (
     <div className="min-h-screen relative">
-   
+      <TermsModal />
+      <LetsTalk />
+     
       <Header />
       <Navbar />
       <Line3 />

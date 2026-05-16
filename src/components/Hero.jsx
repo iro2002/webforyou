@@ -42,7 +42,7 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-20 bg-white text-black overflow-hidden">
+    <section id="services" className="relative py-10 bg-white text-black overflow-hidden">
 
       {/* HEADER */}
       <motion.div

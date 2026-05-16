@@ -5,10 +5,10 @@ import bgImage from "../images/bg5.png";
 const feedbacks = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "Marketing Director",
+    name: "Asela Nishshanka",
+    role: "Photographer",
     comment:
-      "The team delivered beyond expectations. The UI/UX design completely transformed our digital presence and improved conversions significantly.",
+      "Excellent work! The website design is clean, modern, and very user-friendly. Everything was delivered on time and exactly as discussed. Highly recommended for anyone looking for a professional website designer.",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const feedbacks = [
     name: "Emma Williams",
     role: "Brand Manager",
     comment:
-      "They perfectly understood our brand vision and turned it into a modern, elegant digital experience.",
+      "“They perfectly understood our brand vision and turned it into a modern, elegant digital experience.”",
   },
 ];
 

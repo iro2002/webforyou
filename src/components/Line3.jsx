@@ -30,11 +30,11 @@ const About = () => {
           <motion.h2
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className="text-5xl md:text-7xl xl:text-8xl font-thin text-white leading-[0.95]"
+            transition={{ duration: 1 }}
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white leading-[0.9] tracking-tight font-thin"
           >
             We build digital
-            <span className="block mt-4 text-black">
+            <span className="block mt-2 md:mt-4 text-black font-thin">
               experiences that convert
             </span>
           </motion.h2>
