@@ -1,113 +1,118 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const PremiumSeparator = () => {
+const About = () => {
   return (
-    <section className="relative overflow-hidden bg-[#c22924] min-h-[700px] flex items-center">
+    <section className="relative w-full bg-[#c22924] overflow-hidden py-28">
 
-      {/* SAFE BACKGROUND LAYER */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* BACKGROUND GLOW */}
+      <div className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-white/10 blur-[160px] rounded-full" />
+      <div className="absolute -bottom-40 -right-40 w-[520px] h-[520px] bg-black/20 blur-[180px] rounded-full" />
 
-        {/* GLOW */}
-        <div className="absolute -top-40 -left-40 w-[360px] md:w-[500px] h-[360px] md:h-[500px] bg-white/10 blur-[140px] rounded-full" />
-        <div className="absolute -bottom-40 right-0 w-[360px] md:w-[500px] h-[360px] md:h-[500px] bg-black/20 blur-[160px] rounded-full" />
+      {/* BIG BACK TEXT */}
+      <h1 className="absolute inset-0 flex items-center justify-center text-[18vw] font-thin tracking-tighter text-white/5 pointer-events-none select-none">
+        ABOUT
+      </h1>
 
-        {/* BIG BACKGROUND TEXT (kept subtle but larger) */}
-        <h1 className="absolute inset-0 flex items-center justify-center
-          text-[34vw] sm:text-[26vw] md:text-[20vw]
-          font-thin tracking-tighter text-white/[0.04]
-          select-none">
-          DESIGN
-        </h1>
+      <div className="relative z-10 max-w-[120rem] mx-auto px-8 grid lg:grid-cols-2 gap-20 items-center">
 
-        <h1 className="absolute inset-0 flex items-center justify-center
-          text-[34vw] sm:text-[26vw] md:text-[20vw]
-          font-thin tracking-tighter text-black/[0.05]
-          select-none translate-x-2 translate-y-2">
-          DESIGN
-        </h1>
-      </div>
+        {/* LEFT CONTENT */}
+        <div>
+          <motion.p
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="uppercase tracking-[0.45em] text-white/70 text-sm mb-8"
+          >
+            Who We Are
+          </motion.p>
 
-      {/* CONTENT */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 md:px-14 py-24 md:py-0">
+          <motion.h2
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+            className="text-5xl md:text-7xl xl:text-8xl font-thin text-white leading-[0.95]"
+          >
+            We build digital
+            <span className="block mt-4 text-black">
+              experiences that convert
+            </span>
+          </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="uppercase tracking-[0.35em] text-white/70 text-xs mb-6"
-        >
-          Next Generation Experience
-        </motion.p>
+          <div className="w-[180px] h-[3px] bg-white/70 mt-10" />
 
-<motion.h2
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl
-  leading-[0.95] font-thin text-white"
->
-  We build digital{" "}
-  <span className="block mt-3 text-black/80">
-    experiences that convert
-  </span>
-</motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="mt-8 text-white/90 text-lg md:text-xl leading-relaxed max-w-xl"
+          >
+            We design and develop high-performance websites with modern UI,
+            smooth interactions, and conversion-focused strategy to help brands
+            grow in the digital world.
+          </motion.p>
+        </div>
 
-        {/* LINE */}
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: "240px" }}
-          className="h-[2px] bg-white/70 mt-10"
-        />
+        {/* RIGHT SIDE (ENHANCED BALANCE) */}
+        <div className="relative flex items-center justify-end">
 
-        {/* DESCRIPTION */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mt-8 max-w-2xl text-white/90 text-lg md:text-xl leading-relaxed"
-        >
-          We focus on UI clarity, performance, and brand-driven systems that
-          create clean, modern and conversion-focused digital experiences.
-        </motion.p>
+          {/* vertical thin line */}
+          <div className="absolute right-10 top-0 h-full w-[1px] bg-white/20" />
 
-        {/* STATS */}
-        <div className="flex flex-col sm:flex-row gap-10 mt-12">
+          {/* content */}
+          <div className="flex flex-col gap-14 pr-16">
 
-          <div>
-            <h3 className="text-4xl md:text-6xl text-white font-thin">10+</h3>
-            <p className="text-white/60 text-xs uppercase mt-2">Projects</p>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-6xl md:text-7xl font-thin text-white leading-none">
+                10+
+              </h3>
+              <p className="text-white/60 uppercase tracking-[0.35em] text-sm mt-3">
+                Completed Projects
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h3 className="text-6xl md:text-7xl font-thin text-black leading-none">
+                100%
+              </h3>
+              <p className="text-white/60 uppercase tracking-[0.35em] text-sm mt-3">
+                Customer Satisfaction
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <h3 className="text-6xl md:text-7xl font-thin text-white leading-none">
+                24/7
+              </h3>
+              <p className="text-white/60 uppercase tracking-[0.35em] text-sm mt-3">
+                Support Available
+              </p>
+            </motion.div>
+
+            {/* subtle extra text to fill space */}
+            <p className="text-white/30 text-sm tracking-[0.2em] max-w-xs mt-10">
+              WE FOCUS ON CLEAN DESIGN · PERFORMANCE · MODERN INTERACTIONS
+            </p>
+
           </div>
-
-          <div className="hidden sm:block w-px h-12 bg-white/30" />
-
-          <div>
-            <h3 className="text-4xl md:text-6xl text-white font-thin">100%</h3>
-            <p className="text-white/60 text-xs uppercase mt-2">Satisfaction</p>
-          </div>
-
-          <div className="hidden sm:block w-px h-12 bg-white/30" />
-
-          <div>
-            <h3 className="text-4xl md:text-6xl text-white font-thin">24/7</h3>
-            <p className="text-white/60 text-xs uppercase mt-2">Support</p>
-          </div>
-
         </div>
       </div>
 
-      {/* TOP WAVE */}
-      <svg
-        className="absolute top-0 left-0 w-full h-[90px] md:h-[110px] pointer-events-none"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path
-          fill="rgba(255,255,255,0.08)"
-          d="M0,96L80,106.7C160,117,320,139,480,149.3C640,160,800,160,960,138.7C1120,117,1280,75,1360,53.3L1440,32L1440,0L0,0Z"
-        />
-      </svg>
-
       {/* BOTTOM WAVE */}
       <svg
-        className="absolute bottom-0 left-0 w-full h-[100px] md:h-[140px] pointer-events-none"
+        className="absolute bottom-0 left-0 w-full h-[140px] pointer-events-none"
         viewBox="0 0 1440 320"
         preserveAspectRatio="none"
       >
@@ -121,4 +126,4 @@ const PremiumSeparator = () => {
   );
 };
 
-export default PremiumSeparator;
+export default About;
