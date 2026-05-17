@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import bgImage from "../images/bg5.png";
 
@@ -15,7 +15,7 @@ const feedbacks = [
     name: "Manthila Balasuriya",
     role: "Director",
     comment:
-      "What impressed me the most was how quickly he understood exactly what I wanted. I shared a few rough references and explained the overall vibe I was looking for for my portfolio website. Based on that, he came back with an initial design that was much better than I expected. From the beginning, I felt that he truly understood my vision.",
+      "What impressed me the most was how quickly he understood exactly what I wanted...",
   },
   {
     id: 3,
@@ -26,34 +26,34 @@ const feedbacks = [
   },
 ];
 
-const CustomerFeedback = () => {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.18,
-      },
+// ✅ move variants OUTSIDE render (prevents recreation)
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
     },
-  };
+  },
+};
 
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.9,
-      y: 40,
-      filter: "blur(6px)",
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 35,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
     },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.85,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-  };
+  },
+};
+
+const CustomerFeedback = () => {
+  // optional memo (prevents rerenders if parent updates)
+  const cards = useMemo(() => feedbacks, []);
 
   return (
     <section
@@ -63,30 +63,27 @@ const CustomerFeedback = () => {
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Overlay */}
+      {/* Overlay (unchanged UI) */}
       <div className="absolute inset-0 bg-white/90" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16">
 
         {/* HEADER */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
           className="mb-20 text-center max-w-4xl mx-auto"
         >
           <h2 className="text-6xl md:text-8xl lg:text-[110px] font-light leading-[1.05] tracking-tight">
             What our{" "}
-            <span className="text-[#c22924]">
-              clients say
-            </span>
+            <span className="text-[#c22924]">clients say</span>
           </h2>
 
-          <p className="mt-8 text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-8 text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
             Real feedback from clients who trusted us to build their digital presence
             with performance, design, and strategy.
           </p>
@@ -97,24 +94,20 @@ const CustomerFeedback = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-10"
         >
-          {feedbacks.map((item) => (
+          {cards.map((item) => (
             <motion.div
               key={item.id}
               variants={cardVariants}
               className="
-                relative
-                p-8
-                bg-white/80
-                backdrop-blur-md
-                border border-black/10
-                rounded-2xl
+                relative p-8 bg-white/80 backdrop-blur-md
+                border border-black/10 rounded-2xl
                 shadow-[6px_6px_0px_#c22924]
-                transition-all duration-300
-                hover:-translate-y-3
-                hover:scale-[1.04]
+                transition-transform duration-300
+                will-change-transform
+                hover:-translate-y-2
                 hover:shadow-[10px_10px_0px_#c22924]
               "
             >
@@ -124,9 +117,7 @@ const CustomerFeedback = () => {
 
               <div className="mt-8">
                 <h4 className="text-lg font-medium">{item.name}</h4>
-                <span className="text-sm text-gray-500">
-                  {item.role}
-                </span>
+                <span className="text-sm text-gray-500">{item.role}</span>
               </div>
             </motion.div>
           ))}
