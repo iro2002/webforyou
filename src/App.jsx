@@ -20,6 +20,7 @@ import Line2 from "./components/Line2";
 import Line3 from "./components/Line3";
 import LetsTalk from "./components/LetsTalk";
 import TermsModal from "./components/TermsModal";
+import Process from "./components/Process";
 
 
 const App = () => {
@@ -36,11 +37,13 @@ const App = () => {
       
       <Hero />
       <Line />
+      
       <Gallery />
       
      
       <Artist />
       <Album />
+      <Process />
       <Line2 />
 
       <Price />

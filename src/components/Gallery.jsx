@@ -12,17 +12,17 @@ const feedbacks = [
   },
   {
     id: 2,
-    name: "Michael Lee",
-    role: "Startup Founder",
+    name: "Manthila Balasuriya",
+    role: "Director",
     comment:
-      "Incredible attention to detail and smooth communication. The website performance and design quality are world-class.",
+      "What impressed me the most was how quickly he understood exactly what I wanted. I shared a few rough references and explained the overall vibe I was looking for for my portfolio website. Based on that, he came back with an initial design that was much better than I expected. From the beginning, I felt that he truly understood my vision.",
   },
   {
     id: 3,
-    name: "Emma Williams",
-    role: "Brand Manager",
+    name: "Sulash De Silva",
+    role: "Owner",
     comment:
-      "“They perfectly understood our brand vision and turned it into a modern, elegant digital experience.”",
+      "They perfectly understood our brand vision and turned it into a modern, elegant digital experience.",
   },
 ];
 

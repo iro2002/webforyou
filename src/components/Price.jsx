@@ -43,7 +43,7 @@ const plans = [
       "Full Stack Development",
       "Free Domain (1 Year)",
       "SSL Certificate Included",
-      "Hosting Setup (6 Months Free)",
+      "Hosting Setup (1 Months Free)",
       "Priority Support",
     ],
   },
