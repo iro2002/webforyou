@@ -5,7 +5,7 @@ const faqs = [
   {
     question: "What services do you offer?",
     answer:
-      "We specialize in UI/UX design, full-stack web development, and brand identity design for startups and businesses.",
+      "We specialize in full-stack web development and brand identity design, helping startups and businesses build strong digital experiences",
   },
   {
     question: "How long does a project usually take?",

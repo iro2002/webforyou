@@ -26,14 +26,14 @@ const Header = () => {
 
           <span className="text-white/40">|</span>
 
-          <a href="#newsletter" className="hover:opacity-80 uppercase transition">
-            Newsletter
+          <a className="hover:opacity-80 uppercase transition">
+            +94 76 219 6507
           </a>
           <span className="text-white/40">|</span>
 
           <a
-            href="mailto:hello@webforyou.com"
-            className="flex items-center gap-2 hover:opacity-80 uppercase transition"
+            href="mailto:infowebforyou.team@gmail.com"
+            className="flex items-center gap-2 hover:opacity-80 transition"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -44,20 +44,21 @@ const Header = () => {
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
             </svg>
-            hello@webforyou.com
+            infowebforyou.team@gmail.com
           </a>
         </div>
 
-        <Link to="/contact" className="flex items-center h-full px-8 bg-black text-white text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all">
+        <a href="https://wa.me/94762196507" target="_blank" rel="noopener noreferrer" className="flex items-center h-full px-8 bg-black text-white text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all">
           Let’s Talk
-        </Link>
+        </a>
       </div>
 
       {/* MAIN NAV AREA (Transparent background wrapper) */}
       <div className="w-full flex items-start justify-between">
 
         {/* LOGO LEFT (No Background, completely separate) */}
-        <div
+        <Link
+          to="/"
           className={`pointer-events-auto flex items-center gap-2 cursor-pointer transition-all duration-300 pl-6 md:pl-12 ${scrolled ? "mt-4" : "mt-6"
             }`}
         >
@@ -67,7 +68,7 @@ const Header = () => {
             <span className="text-black">WEB</span>
             <span className="text-[#c22924]">FORYOU</span>
           </div>
-        </div>
+        </Link>
 
         {/* DESKTOP NAV (Right Half Only, White Background) */}
         <nav
@@ -159,9 +160,9 @@ const Header = () => {
                 );
               })}
 
-              <Link to="/contact" onClick={() => setMenuOpen(false)} className="mt-10 flex justify-center items-center bg-[#c22924] text-white py-5 rounded-full font-bold uppercase w-full text-xs hover:bg-black transition">
+              <a href="https://wa.me/94762196507" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="mt-10 flex justify-center items-center bg-[#c22924] text-white py-5 rounded-full font-bold uppercase w-full text-xs hover:bg-black transition">
                 Let’s Talk
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

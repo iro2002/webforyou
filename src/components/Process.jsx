@@ -9,27 +9,33 @@ const fadeUp = {
 const processSteps = [
   {
     number: "01",
-    title: "Discovery",
+    title: "Get Requirements",
     description:
-      "We understand your brand, goals, and audience to build a strong foundation.",
+      "We understand what you need and plan the project step by step.",
   },
   {
     number: "02",
-    title: "Design",
+    title: "Build Basic Version",
     description:
-      "Clean, modern UI/UX design focused on clarity, usability, and aesthetics.",
+      "We create a simple working version of your website so you can see the idea.",
   },
   {
     number: "03",
-    title: "Development",
+    title: "Deployment",
     description:
-      "High-performance websites built with modern technologies and smooth interactions.",
+      "We put your website online so it can be accessed from anywhere.",
   },
   {
     number: "04",
-    title: "Launch",
+    title: "Get Feedback",
     description:
-      "Testing, optimization, and deployment to ensure everything runs perfectly.",
+      "You review the website and tell us what to improve or change.",
+  },
+  {
+    number: "05",
+    title: "Final Update",
+    description:
+      "We fix everything based on feedback and deliver the final version.",
   },
 ];
 
@@ -54,7 +60,7 @@ const Process = () => {
             transition={{ duration: 0.5 }}
             className="uppercase tracking-[0.45em] text-black/50 text-sm mb-6"
           >
-            Our Process
+            How We Work
           </motion.p>
 
           <motion.h2
@@ -67,7 +73,7 @@ const Process = () => {
           >
             Simple steps
             <span className="block mt-3 text-[#c22924]">
-              that deliver results
+              from idea to reality
             </span>
           </motion.h2>
         </div>
@@ -104,7 +110,6 @@ const Process = () => {
                   {step.description}
                 </p>
 
-                {/* LINE ANIMATION */}
                 <div className="w-0 h-[2px] bg-[#c22924] group-hover:w-40 transition-all duration-500" />
               </div>
 

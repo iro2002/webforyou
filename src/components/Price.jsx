@@ -36,15 +36,16 @@ const plans = [
   {
     id: 3,
     name: "Enterprise",
-    price: "LKR 59,000",
+    price: "LKR 69,000",
     desc: "Complete digital solution for large-scale businesses and platforms.",
     features: [
       "Modern Design",
       "Full Stack Development",
       "Free Domain (1 Year)",
       "SSL Certificate Included",
-      "Hosting Setup (1 Months Free)",
+      "Hosting Setup (1 Months Free/For 1 Year additional LKR 25,000)",
       "Priority Support",
+      "Payment Gateway Integration",
     ],
   },
 ];

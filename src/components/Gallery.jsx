@@ -54,7 +54,7 @@ const CustomerFeedback = () => {
 
   return (
     <section
-      id="about"
+      id="feedback"
       className="relative py-20 text-black overflow-hidden"
       style={{
         backgroundImage: `url(${bgImage})`,
