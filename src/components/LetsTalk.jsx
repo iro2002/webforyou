@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import { Link } from "react-router-dom";
+
 const LetsTalk = () => {
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -31,14 +33,14 @@ const LetsTalk = () => {
         visible ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
       }`}
     >
-      <a
-        href="#contact"
+      <Link
+        to="/contact"
         className="group h-48 w-10 bg-[#c22924] flex items-center justify-center shadow-lg rounded-l-sm hover:bg-black transition-colors duration-300"
       >
         <span className="text-[10px] font-bold tracking-[0.3em] text-white rotate-90 whitespace-nowrap group-hover:scale-105 transition-transform duration-300">
           LET’S TALK
         </span>
-      </a>
+      </Link>
     </div>
   );
 };

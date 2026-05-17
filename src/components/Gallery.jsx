@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import bgImage from "../images/bg5.png";
 
@@ -15,45 +15,42 @@ const feedbacks = [
     name: "Manthila Balasuriya",
     role: "Director",
     comment:
-      "What impressed me the most was how quickly he understood exactly what I wanted...",
+      "What impressed me the most was how quickly he understood exactly what I wanted. I shared a few rough references and explained the overall vibe I was looking for. He delivered beyond expectations.",
   },
   {
     id: 3,
     name: "Sulash De Silva",
     role: "Owner",
     comment:
-      "They perfectly understood our brand vision and turned it into a modern, elegant digital experience.",
+      "Working with him was super easy and smooth. He turned our ideas into a clean and modern website. The final result looked even better than expected.",
   },
 ];
 
-// ✅ move variants OUTSIDE render (prevents recreation)
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
 const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 35,
-  },
-  visible: {
+  hidden: { opacity: 0, y: 20 },
+  show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.35,
+      ease: "easeOut",
     },
   },
 };
 
 const CustomerFeedback = () => {
-  // optional memo (prevents rerenders if parent updates)
   const cards = useMemo(() => feedbacks, []);
+  const [index, setIndex] = useState(0);
+
+  const prev = useCallback(() => {
+    setIndex((i) => (i === 0 ? cards.length - 1 : i - 1));
+  }, [cards.length]);
+
+  const next = useCallback(() => {
+    setIndex((i) => (i === cards.length - 1 ? 0 : i + 1));
+  }, [cards.length]);
+
+  const active = cards[index];
 
   return (
     <section
@@ -65,53 +62,94 @@ const CustomerFeedback = () => {
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay (unchanged UI) */}
+      {/* overlay */}
       <div className="absolute inset-0 bg-white/90" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16">
 
         {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7 }}
-          className="mb-20 text-center max-w-4xl mx-auto"
-        >
-          <h2 className="text-6xl md:text-8xl lg:text-[110px] font-light leading-[1.05] tracking-tight">
+        <div className="mb-16 text-center max-w-4xl mx-auto">
+          <h2 className="text-6xl md:text-8xl lg:text-[110px] font-light leading-[1.05]">
             What our{" "}
             <span className="text-[#c22924]">clients say</span>
           </h2>
 
-          <p className="mt-8 text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-            Real feedback from clients who trusted us to build their digital presence
-            with performance, design, and strategy.
+          <p className="mt-6 text-gray-600 text-lg md:text-xl">
+            Real feedback from clients who trusted us to build their digital presence.
           </p>
-        </motion.div>
+        </div>
 
-        {/* CARDS */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-10"
-        >
+        {/* MOBILE CAROUSEL */}
+        <div className="md:hidden relative flex items-center justify-center">
+
+          {/* LEFT WHITE ARROW */}
+          <button
+            onClick={prev}
+            className="
+              absolute left-2 z-10
+              w-11 h-11
+              bg-white text-black
+              rounded-full flex items-center justify-center
+              shadow-md
+              active:scale-95 transition-transform
+            "
+          >
+            ‹
+          </button>
+
+          {/* CARD */}
+          <motion.div
+            key={active.id}
+            variants={cardVariants}
+            initial="hidden"
+            animate="show"
+            className="
+              w-[85%]
+              p-7 bg-white/80 backdrop-blur-md
+              border border-black/10 rounded-2xl
+              shadow-[6px_6px_0px_#c22924]
+              will-change-transform
+            "
+          >
+            <p className="text-gray-700 text-lg leading-relaxed">
+              “{active.comment}”
+            </p>
+
+            <div className="mt-6">
+              <h4 className="text-lg font-medium">{active.name}</h4>
+              <span className="text-sm text-gray-500">{active.role}</span>
+            </div>
+          </motion.div>
+
+          {/* RIGHT WHITE ARROW */}
+          <button
+            onClick={next}
+            className="
+              absolute right-2 z-10
+              w-11 h-11
+              bg-white text-black
+              rounded-full flex items-center justify-center
+              shadow-md
+              active:scale-95 transition-transform
+            "
+          >
+            ›
+          </button>
+        </div>
+
+        {/* DESKTOP GRID (UNCHANGED) */}
+        <div className="hidden md:grid grid-cols-3 gap-10">
           {cards.map((item) => (
-            <motion.div
+            <div
               key={item.id}
-              variants={cardVariants}
               className="
-                relative p-8 bg-white/80 backdrop-blur-md
+                p-8 bg-white/80 backdrop-blur-md
                 border border-black/10 rounded-2xl
                 shadow-[6px_6px_0px_#c22924]
-                transition-transform duration-300
-                will-change-transform
-                hover:-translate-y-2
-                hover:shadow-[10px_10px_0px_#c22924]
+                hover:-translate-y-2 transition-transform duration-300
               "
             >
-              <p className="text-gray-700 leading-relaxed text-lg">
+              <p className="text-gray-700 text-lg leading-relaxed">
                 “{item.comment}”
               </p>
 
@@ -119,9 +157,9 @@ const CustomerFeedback = () => {
                 <h4 className="text-lg font-medium">{item.name}</h4>
                 <span className="text-sm text-gray-500">{item.role}</span>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
       </div>
     </section>

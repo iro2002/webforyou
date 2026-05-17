@@ -1,233 +1,150 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 const CONTACT_INFO = [
   {
     icon: Mail,
-    title: "Email Us",
+    title: "Email",
     detail: "hello@youragency.com",
-    subDetail: "Drop us a line anytime",
   },
   {
     icon: Phone,
-    title: "Call Us",
+    title: "Phone",
     detail: "+94 77 123 4567",
-    subDetail: "Mon-Fri, 9am to 6pm",
   },
   {
     icon: MapPin,
-    title: "Visit Us",
+    title: "Location",
     detail: "Colombo, Sri Lanka",
-    subDetail: "By appointment only",
   },
 ];
 
-const SubmitButton = ({ isSubmitting }) => (
-  <motion.button
-    type="submit"
-    disabled={isSubmitting}
-    whileHover={{ scale: 1.02 }}
-    whileTap={{ scale: 0.98 }}
-    className="relative w-full group py-4 rounded-xl overflow-hidden text-[11px] font-bold tracking-[0.2em] uppercase mt-4 disabled:opacity-70"
-  >
-    <div className="absolute inset-0 bg-[#c22924]" />
-    <div className="absolute inset-0 backdrop-blur-md bg-white/10 opacity-0 group-hover:opacity-100 transition duration-500" />
-    <div className="absolute -left-40 top-0 h-full w-40 bg-white/20 rotate-12 group-hover:left-full transition-all duration-700 ease-in-out" />
-    <span className="relative z-10 text-white font-black flex items-center justify-center gap-2">
-      {isSubmitting ? "Sending..." : "Send Message"}
-      {!isSubmitting && <Send className="w-4 h-4" />}
-    </span>
-  </motion.button>
-);
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0 },
+};
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({ name: "", email: "", message: "" });
-      alert("Message sent successfully!");
-    }, 1500);
-  };
-
-  // Animations for the Left Column (Contact Info)
-  const leftColumnVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-    },
-  };
-
-  const infoCardVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "spring", stiffness: 70, damping: 15 },
-    },
-  };
-
-  // Animations for the Right Column (Form Fields)
-  const formContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.4 }, // Starts slightly after the left column
-    },
-  };
-
-  const formItemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 100, damping: 15 },
-    },
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   return (
-    <section id="contact" className="relative py-20 bg-white overflow-hidden min-h-screen flex flex-col justify-center">
-      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-12 w-full">
-        
-        {/* Header Section */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }} // Triggers when 30% of header is visible
-          className="text-center max-w-2xl mx-auto mb-14 md:mb-20 flex flex-col items-center"
-        >
-          <motion.span
-            variants={headerVariants}
-            className="inline-block text-[9px] font-bold tracking-[0.4em] uppercase mb-2.5 text-[#c22924]"
+    <section className="relative bg-white py-32 overflow-hidden">
+
+      {/* BACK TEXT */}
+      <h1 className="absolute top-20 left-1/2 -translate-x-1/2 text-[14vw] font-thin text-black/[0.03] pointer-events-none select-none">
+        CONTACT
+      </h1>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+
+        {/* HEADER */}
+        <div className="text-center max-w-2xl mx-auto mb-24">
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="uppercase tracking-[0.4em] text-sm text-[#c22924] mb-4"
           >
             Get In Touch
-          </motion.span>
+          </motion.p>
+<motion.h2
+  variants={fadeUp}
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true }}
+  className="text-5xl md:text-6xl lg:text-7xl font-thin leading-[0.95] text-black"
+>
+  Let’s build something
+  <span className="block text-[#c22924] mt-3">
+    amazing together
+  </span>
+</motion.h2>
 
-          <motion.h2
-            variants={headerVariants}
-            className="text-4xl md:text-6xl font-light tracking-tight text-black"
-          >
-            Let's start a{" "}
-            <span className="text-[#c22924]">
-              conversation
-            </span>
-          </motion.h2>
-        </motion.div>
+        </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-start">
-          
-          {/* Left Column: Contact Info */}
-          <motion.div
-            variants={leftColumnVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }} // Triggers when 20% of this section is visible
-            className="lg:col-span-2 space-y-6"
-          >
-            {CONTACT_INFO.map((info, idx) => (
+        {/* GRID */}
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+
+          {/* LEFT SIDE */}
+          <div className="space-y-6">
+
+            {CONTACT_INFO.map((item, i) => (
               <motion.div
-                key={idx}
-                variants={infoCardVariants}
-                className="group flex items-start gap-5 p-6 rounded-[2rem] border border-gray-100 bg-gray-50/50 hover:bg-white hover:border-[#c22924]/30 hover:shadow-lg hover:shadow-[#c22924]/5 transition-all duration-300"
+                key={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-center gap-5 border border-black/10 rounded-2xl p-6 hover:border-[#c22924]/40 transition"
               >
-                <div className="p-3.5 rounded-2xl bg-white border border-gray-100 text-[#c22924] group-hover:bg-[#c22924] group-hover:text-white transition-colors duration-300">
-                  <info.icon className="w-6 h-6 stroke-[2px]" />
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-black/5 text-[#c22924]">
+                  <item.icon className="w-5 h-5" />
                 </div>
+
                 <div>
-                  <h4 className="text-lg font-black text-[#1A1A1E] mb-1 tracking-tight">
-                    {info.title}
-                  </h4>
-                  <p className="text-[#c22924] font-bold text-sm mb-1">
-                    {info.detail}
-                  </p>
-                  <p className="text-gray-500 text-xs font-medium">
-                    {info.subDetail}
-                  </p>
+                  <h4 className="text-black font-medium">{item.title}</h4>
+                  <p className="text-black/60 text-sm">{item.detail}</p>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
 
-          {/* Right Column: Contact Form */}
+          </div>
+
+          {/* RIGHT SIDE FORM */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
-            className="lg:col-span-3 bg-white p-8 md:p-10 rounded-[2rem] border border-gray-200"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="border border-black/10 rounded-3xl p-10"
           >
-            <motion.form 
-              variants={formContainerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              onSubmit={handleSubmit} 
-              className="space-y-6"
-            >
-              <div className="grid md:grid-cols-2 gap-6">
-                <motion.div variants={formItemVariants} className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest uppercase text-gray-500 ml-2">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-5 py-4 bg-gray-50/50 border border-gray-200 rounded-xl text-sm font-medium text-[#1A1A1E] placeholder-gray-400 focus:outline-none focus:border-[#c22924] focus:ring-1 focus:ring-[#c22924] transition-all"
-                    placeholder="John Doe"
-                  />
-                </motion.div>
-                <motion.div variants={formItemVariants} className="space-y-2">
-                  <label className="text-[10px] font-bold tracking-widest uppercase text-gray-500 ml-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-5 py-4 bg-gray-50/50 border border-gray-200 rounded-xl text-sm font-medium text-[#1A1A1E] placeholder-gray-400 focus:outline-none focus:border-[#c22924] focus:ring-1 focus:ring-[#c22924] transition-all"
-                    placeholder="john@example.com"
-                  />
-                </motion.div>
-              </div>
 
-              <motion.div variants={formItemVariants} className="space-y-2">
-                <label className="text-[10px] font-bold tracking-widest uppercase text-gray-500 ml-2">
-                  Project Details
-                </label>
-                <textarea
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-5 py-4 bg-gray-50/50 border border-gray-200 rounded-xl text-sm font-medium text-[#1A1A1E] placeholder-gray-400 focus:outline-none focus:border-[#c22924] focus:ring-1 focus:ring-[#c22924] transition-all resize-none"
-                  placeholder="Tell us about your goals, timeline, and budget..."
-                />
-              </motion.div>
+            <div className="space-y-6">
 
-              <motion.div variants={formItemVariants}>
-                <SubmitButton isSubmitting={isSubmitting} />
-              </motion.div>
-            </motion.form>
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                className="w-full border border-black/10 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-[#c22924]"
+              />
+
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full border border-black/10 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-[#c22924]"
+              />
+
+              <textarea
+                rows="5"
+                placeholder="Tell us about your project..."
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                className="w-full border border-black/10 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-[#c22924] resize-none"
+              />
+
+              <button className="w-full bg-[#c22924] text-white py-4 rounded-xl text-sm tracking-widest uppercase hover:opacity-90 transition">
+                Send Message
+              </button>
+
+            </div>
+
           </motion.div>
 
         </div>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,7 +14,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = ["Home", "Services", "Projects", "About", "Contact"];
+  const navLinks = ["Home", "Services", "Projects", "Feedback", "Contact"];
 
   // The wrapper uses pointer-events-none so clicks pass through the transparent middle gap
   return (
@@ -46,9 +48,9 @@ const Header = () => {
           </a>
         </div>
 
-        <button className="h-full px-8 bg-black text-white text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all">
+        <Link to="/contact" className="flex items-center h-full px-8 bg-black text-white text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all">
           Let’s Talk
-        </button>
+        </Link>
       </div>
 
       {/* MAIN NAV AREA (Transparent background wrapper) */}
@@ -74,19 +76,23 @@ const Header = () => {
             : "bg-white py-6 px-16 shadow-sm"
             }`}
         >
-          {navLinks.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={() => setActiveLink(item)}
-              className={`text-sm font-medium transition ${activeLink === item
-                ? "text-[#c22924]"
-                : "text-gray-900 hover:text-[#c22924]"
-                }`}
-            >
-              {item}
-            </a>
-          ))}
+          {navLinks.map((item) => {
+            const target = item === "Contact" ? "/contact" : `/#${item.toLowerCase()}`;
+            return (
+              <HashLink
+                key={item}
+                smooth
+                to={target}
+                onClick={() => setActiveLink(item)}
+                className={`text-sm font-medium transition ${activeLink === item
+                  ? "text-[#c22924]"
+                  : "text-gray-900 hover:text-[#c22924]"
+                  }`}
+              >
+                {item}
+              </HashLink>
+            );
+          })}
         </nav>
 
         {/* MOBILE MENU BUTTON (Given a white background block so it's visible) */}
@@ -134,24 +140,28 @@ const Header = () => {
             </div>
 
             <div className="flex flex-col gap-8">
-              {navLinks.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => {
-                    setActiveLink(item);
-                    setMenuOpen(false);
-                  }}
-                  className={`text-4xl font-light ${activeLink === item ? "text-[#c22924]" : "text-black"
-                    }`}
-                >
-                  {item}
-                </a>
-              ))}
+              {navLinks.map((item) => {
+                const target = item === "Contact" ? "/contact" : `/#${item.toLowerCase()}`;
+                return (
+                  <HashLink
+                    key={item}
+                    smooth
+                    to={target}
+                    onClick={() => {
+                      setActiveLink(item);
+                      setMenuOpen(false);
+                    }}
+                    className={`text-4xl font-light ${activeLink === item ? "text-[#c22924]" : "text-black"
+                      }`}
+                  >
+                    {item}
+                  </HashLink>
+                );
+              })}
 
-              <button className="mt-10 bg-[#c22924] text-white py-5 rounded-full font-bold uppercase w-full text-xs hover:bg-black transition">
+              <Link to="/contact" onClick={() => setMenuOpen(false)} className="mt-10 flex justify-center items-center bg-[#c22924] text-white py-5 rounded-full font-bold uppercase w-full text-xs hover:bg-black transition">
                 Let’s Talk
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}

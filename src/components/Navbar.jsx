@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import heroImg from "../images/hero.png";
 
 const HeroSection = () => {
@@ -81,13 +83,13 @@ const HeroSection = () => {
             variants={reveal}
             className="mt-10 flex items-center gap-6"
           >
-            <button className="px-9 py-3.5 text-sm font-medium text-white rounded-full shadow-md transition bg-[#c22924] hover:bg-black">
+            <Link to="/contact" className="inline-block px-9 py-3.5 text-sm font-medium text-white rounded-full shadow-md transition bg-[#c22924] hover:bg-black">
               Start Project
-            </button>
+            </Link>
 
-            <button className="text-sm font-medium text-gray-700 hover:text-[#c22924] transition">
+            <HashLink smooth to="/#projects" className="inline-block text-sm font-medium text-gray-700 hover:text-[#c22924] transition">
               View Work →
-            </button>
+            </HashLink>
           </motion.div>
         </div>
       </motion.div>
