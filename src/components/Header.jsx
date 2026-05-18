@@ -66,7 +66,7 @@ const Header = () => {
 
           <div className="text-2xl md:text-3xl font-semibold tracking-tight shadow-white drop-shadow-md">
             <span className="text-black">WEB</span>
-            <span className="text-[#c22924]">FORYOU</span>
+            <span className="text-[#c22924]">4YOU</span>
           </div>
         </Link>
 

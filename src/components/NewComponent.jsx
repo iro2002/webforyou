@@ -32,36 +32,37 @@ const ServicesSection = () => {
         <div className="w-full max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center">
 
           {/* LEFT TEXT */}
-          <div className="flex-1 relative h-[260px] flex items-center justify-center md:justify-end md:pr-12">
+          <div className="w-full flex-1 relative h-[220px] sm:h-[240px] md:h-[260px] flex items-center justify-center md:justify-end md:pr-12">
 
             <motion.h1
               style={{ opacity: designOpacity, y: designY }}
-              className="absolute text-7xl md:text-8xl lg:text-9xl font-light tracking-tight text-[#c22924]"
+              className="absolute w-full left-0 text-center md:text-right text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-[#c22924]"
             >
               Creative UI Experiences
             </motion.h1>
 
             <motion.h1
               style={{ opacity: devOpacity, y: devY }}
-              className="absolute text-7xl md:text-8xl lg:text-9xl font-light tracking-tight text-[#c22924]"
+              className="absolute w-full left-0 text-center md:text-right text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-[#c22924]"
             >
               Scalable Web Development
             </motion.h1>
 
             <motion.h1
               style={{ opacity: deliverOpacity, y: deliverY }}
-              className="absolute text-7xl md:text-8xl lg:text-9xl font-light tracking-tight text-[#c22924]"
+              className="absolute w-full left-0 text-center md:text-right text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-[#c22924]"
             >
               SEO & Growth Optimization
             </motion.h1>
 
           </div>
 
+          {/* DIVIDER */}
           <div className="hidden md:block w-px h-[200px] bg-gray-300 mx-10" />
 
           {/* RIGHT DESCRIPTION */}
-          <div className="flex-1 md:pl-12 text-center md:text-left mt-10 md:mt-0">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05]">
+          <div className="w-full flex-1 md:pl-12 text-center md:text-left mt-10 md:mt-0">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight md:leading-[1.05]">
               We craft high-performance digital solutions
               <span className="block font-light tracking-tight mt-2 text-[#c22924]">
                 designed to elevate your brand impact
@@ -69,7 +70,7 @@ const ServicesSection = () => {
               through clean design, solid engineering, and measurable growth.
             </h2>
 
-            <div className="mt-6 text-xs tracking-[0.25em] uppercase text-gray-400">
+            <div className="mt-8 md:mt-6 text-xs tracking-[0.25em] uppercase text-gray-400">
               Core expertise areas
             </div>
           </div>
